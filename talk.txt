@@ -1,0 +1,5 @@
+course=近期课程[1]危机管理（2017)[2]IETLS SAT Programme 
+help=谢谢你对UIC ACE课程感兴趣.你可以打 [1] course [2] registration [3] discount 
+test=chatbot is working fine.
+registration=有手机或电脑打开uic.edu.hk/en/ace/application然后填下表格，便完成！ 
+discount=某些课程有Early Bird优惠，请点1234567查询 
