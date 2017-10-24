@@ -4,7 +4,8 @@
 # Ref: https://github.com/youfou/wxpy
 # FOR PYTHON 27 ON WINDOWS
 # 用户自行设计关键字对话
-#
+# support : https://stackoverflow.com/questions/26473681/pip-install-numpy-throws-an-error-ascii-codec-cant-decode-byte-0xe2
+
 
 d={"help"         : "谢谢你对UIC-ACE课程感兴趣，你可以打如下关键字 [1] course  [2] registration [3] discount" , 
    "test"         : "ACE chatbot is working fine. " ,
@@ -16,7 +17,8 @@ d={"help"         : "谢谢你对UIC-ACE课程感兴趣，你可以打如下关�
    "1"            : "不要打数字，打小写英文或中文关键字"  ,
    "2"            : "不要打数字，打小写英文或中文关键字"  ,
    "3"            : "不要打数字，打小写英文或中文关键字"  ,
-   "4"            : "不要打数字，打小写英文或中文关键字"  } 
+   "4"            : "不要打数字，打小写英文或中文关键字"  ,
+   "*autoreply"   : "自动回复，这是微信客服机械人，请输入 help " } 
 
 
 #Change the default encoding for Chinese characters
@@ -63,20 +65,36 @@ def print_messages(msg):
     print (msg)
     amsg=msg.text
     awho=msg.sender
-    #print (awho)
+    awho=str(awho)
+    #awho.encode('utf-8') 
     #print(amsg)
+    amsg_str=amsg
+    amsg_str=amsg_str.decode('utf-8').encode('gb18030') 
     #print(type(awho))
+    #print(type(amsg_str))
     #print(type(amsg))
-    log_messages(amsg)
+    log_messages(awho+":"+amsg_str)
 
     key=list(d.keys())
     value=list(d.values())
+    amsg=amsg.lower() 
+
+    autoreplyMsg=""
+    for i in range(len(key)):
+        if ("*autoreply"==key[i]):
+            autoreplyMsg=value[i]
+            autoreplyMsg.decode('utf-8').encode('gb18030') 
+    replyFlag=0
     for i in range(len(key)):
         if (amsg==key[i]):
             print("triggered")
             sentMsg=value[i]
             sentMsg.decode('utf-8').encode('gb18030') 
             msg.reply(sentMsg)
+            replyFlag=1
+    if  (replyFlag==0 and autoreplyMsg!=""):
+        print("autoreplying")
+        msg.reply(autoreplyMsg)
         
 
 # The following code is not yet tested

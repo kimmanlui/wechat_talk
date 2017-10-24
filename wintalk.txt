@@ -1,6 +1,12 @@
-help=谢谢你对UIC ACE课程感兴趣.你可以打 [1] course [2] registration [3] discount
+help=谢谢你对UIC ACE课程感兴趣. 请发如下关键字 [1] course [2] registration [3] discount
 course=近期课程[1]危机管理（2017)[2]IETLS SAT Programme 
 registration=使用手机或电脑打开uic.edu.hk/en/ace/application然后填下表格，便完成！ 
 discount=某些课程有Early Bird优惠，请点1234567查询 
 危机管理=非常好的课程
+1=不要打数字，打小写英文或中文关键字
+2=不要打数字，打小写英文或中文关键字
+3=不要打数字，打小写英文或中文关键字
+4=不要打数字，打小写英文或中文关键字
+5=不要打数字，打小写英文或中文关键字
+autoreply=<<自动回复>> 这是微信客服机械人，请发给我 help
 test=ACE chatbot is working fine.
